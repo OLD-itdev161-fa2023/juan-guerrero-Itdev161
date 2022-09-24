@@ -1,5 +1,5 @@
 import express from 'express';
-import connectDatabase from './cofig/db';
+import connectDatabase from './config/db';
 
 // Initialize express application 
 const app = express();
