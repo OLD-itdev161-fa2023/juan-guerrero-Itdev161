@@ -6,7 +6,10 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import config from 'config';
 import User from './models/User';
+<<<<<<< HEAD
 import auth from './middleware/auth';
+=======
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
 
 // Initialize express application
 const app = express();
@@ -79,6 +82,7 @@ app.post(
         await user.save();
 
         // Generate and return a JWT token
+<<<<<<< HEAD
         returnToken(user, res);
       } catch (error) {
         res.status(500).send('Server error');
@@ -135,6 +139,23 @@ app.post(
 
         // Generate and return a JWT token
         returnToken(user, res);
+=======
+        const payload = {
+          user: {
+            id: user.id
+          }
+        };
+
+        jwt.sign(
+          payload,
+          config.get('jwtSecret'),
+          { expiresIn: '10hr' },
+          (err, token) => {
+            if (err) throw err;
+            res.json({ token: token });
+          }
+        );
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
       } catch (error) {
         res.status(500).send('Server error');
       }
@@ -142,6 +163,7 @@ app.post(
   }
 );
 
+<<<<<<< HEAD
 const returnToken = (user, res) => {
   const payload = {
     user: {
@@ -160,6 +182,8 @@ const returnToken = (user, res) => {
   );
 };
 
+=======
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
 // Connection listener
 const port = 5000;
 app.listen(port, () => console.log(`Express server running on port ${port}`));
