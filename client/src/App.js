@@ -1,12 +1,11 @@
 import React from 'react';
+import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
-import axios from 'axios';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
-
   state = {
     data: null,
     token: null,
@@ -24,14 +23,14 @@ class App extends React.Component {
         console.error(`Error fetching data: ${error}`);
       })
 
-    this.authenticateUser();
+      this.authenticateUser();
   }
 
   authenticateUser = () => {
     const token = localStorage.getItem('token');
 
-    if (!token) {
-      localStorage.removeItem('user');
+    if(!token) {
+      localStorage.removeItem('user')
       this.setState({ user: null });
     }
 
@@ -65,29 +64,31 @@ class App extends React.Component {
     const authProps = {
       authenticateUser: this.authenticateUser
     }
+
     return (
       <Router>
         <div className="App">
           <header className="App-header">
-            <h1>Good Things</h1>
+            <h1>GoodThings</h1>
             <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/Register">Register</Link>
+                <Link to="/register">Register</Link>
               </li>
               <li>
-                {user ?
+                {user ? 
                   <Link to="" onClick={this.logOut}>Log out</Link> :
-                  <Link to="/Login">Log in</Link>
+                  <Link to="/login">Log in</Link> 
                 }
+                
               </li>
             </ul>
           </header>
           <main>
             <Route exact path="/">
-              {user ?
+              {user ? 
                 <React.Fragment>
                   <div>Hello {user}!</div>
                   <div>{data}</div>
@@ -96,23 +97,21 @@ class App extends React.Component {
                   Please Register or Login
                 </React.Fragment>
               }
-
+              
             </Route>
             <Switch>
-              <Route
-                exact path="/Register"
+              <Route 
+                exact path="/register" 
                 render={() => <Register {...authProps} />} />
-              <Route
-                exact path="/Login"
+              <Route 
+                exact path="/login" 
                 render={() => <Login {...authProps} />} />
             </Switch>
           </main>
-
         </div>
       </Router>
     );
   }
-
 }
 
 export default App;
