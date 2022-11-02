@@ -1,4 +1,13 @@
 import React from 'react';
+<<<<<<< HEAD
+import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import './App.css';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+
+class App extends React.Component {
+=======
 import './App.css';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
@@ -7,6 +16,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends React.Component {
 
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
   state = {
     data: null,
     token: null,
@@ -24,14 +34,23 @@ class App extends React.Component {
         console.error(`Error fetching data: ${error}`);
       })
 
+<<<<<<< HEAD
+      this.authenticateUser();
+=======
     this.authenticateUser();
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
   }
 
   authenticateUser = () => {
     const token = localStorage.getItem('token');
 
+<<<<<<< HEAD
+    if(!token) {
+      localStorage.removeItem('user')
+=======
     if (!token) {
       localStorage.removeItem('user');
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
       this.setState({ user: null });
     }
 
@@ -65,16 +84,34 @@ class App extends React.Component {
     const authProps = {
       authenticateUser: this.authenticateUser
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
     return (
       <Router>
         <div className="App">
           <header className="App-header">
+<<<<<<< HEAD
+            <h1>GoodThings</h1>
+=======
             <h1>Good Things</h1>
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
             <ul>
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
+<<<<<<< HEAD
+                <Link to="/register">Register</Link>
+              </li>
+              <li>
+                {user ? 
+                  <Link to="" onClick={this.logOut}>Log out</Link> :
+                  <Link to="/login">Log in</Link> 
+                }
+                
+=======
                 <Link to="/Register">Register</Link>
               </li>
               <li>
@@ -82,12 +119,17 @@ class App extends React.Component {
                   <Link to="" onClick={this.logOut}>Log out</Link> :
                   <Link to="/Login">Log in</Link>
                 }
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
               </li>
             </ul>
           </header>
           <main>
             <Route exact path="/">
+<<<<<<< HEAD
+              {user ? 
+=======
               {user ?
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
                 <React.Fragment>
                   <div>Hello {user}!</div>
                   <div>{data}</div>
@@ -96,6 +138,19 @@ class App extends React.Component {
                   Please Register or Login
                 </React.Fragment>
               }
+<<<<<<< HEAD
+              
+            </Route>
+            <Switch>
+              <Route 
+                exact path="/register" 
+                render={() => <Register {...authProps} />} />
+              <Route 
+                exact path="/login" 
+                render={() => <Login {...authProps} />} />
+            </Switch>
+          </main>
+=======
 
             </Route>
             <Switch>
@@ -108,11 +163,15 @@ class App extends React.Component {
             </Switch>
           </main>
 
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
         </div>
       </Router>
     );
   }
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
 }
 
 export default App;
