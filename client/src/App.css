@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
 }
@@ -42,9 +38,5 @@
 }
 
 main {
-  margin: 30px auto;
-<<<<<<< HEAD
+  margin: 30px;
 }
-=======
-}
->>>>>>> 5eb85bbcc2e8cfca167f20140bbab19bb5114c5a
